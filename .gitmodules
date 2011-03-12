@@ -1,3 +1,6 @@
 [submodule "plugins/fluid960gs"]
 	path = plugins/fluid960gs
 	url = https://github.com/bauhouse/fluid960gs.git
+[submodule "plugins/modernizr"]
+	path = plugins/modernizr
+	url = https://github.com/Modernizr/Modernizr.git
