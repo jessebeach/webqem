@@ -51,16 +51,16 @@
 </head>
 
 <body <?php body_class(); ?>>
+<div id="quickbar" class="wrapper">
+  <?php
+  	/* A sidebar in the footer? Yep. You can can customize
+  	 * your footer with four columns of widgets.
+  	 */
+  	get_sidebar( 'header' );
+  ?>
+</div>
 <div class="hfeed">
 	<div id="header" class="wrapper">
-	  <div id="quickbar" class="stack">
-	    <?php
-	    	/* A sidebar in the footer? Yep. You can can customize
-	    	 * your footer with four columns of widgets.
-	    	 */
-	    	get_sidebar( 'header' );
-	    ?>
-	  </div>
 		<div id="masthead" class="stack">
 			<div id="branding" role="banner">
 				<?php $heading_tag = ( is_home() || is_front_page() ) ? 'h1' : 'div'; ?>
@@ -79,9 +79,7 @@
 							$image[1] >= HEADER_IMAGE_WIDTH ) :
 						// Houston, we have a new header image!
 						echo get_the_post_thumbnail( $post->ID, 'post-thumbnail' );
-					else : ?>
-						<img src="<?php header_image(); ?>" width="<?php echo HEADER_IMAGE_WIDTH; ?>" height="<?php echo HEADER_IMAGE_HEIGHT; ?>" alt="" />
-					<?php endif; ?>
+					endif; ?>
 			</div><!-- #branding -->
 		</div><!-- #masthead -->
 	</div><!-- #header -->

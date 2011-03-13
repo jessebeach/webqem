@@ -19,7 +19,7 @@
 	// If we get this far, we have widgets. Let do this.
 ?>
 
-			<div id="header-widget-area" role="complementary">
+			<div id="header-widget-area" role="complementary" class="stack">
 
 <?php if ( is_active_sidebar( 'first-header-widget-area' ) ) : ?>
 				<div class="widget-area">
