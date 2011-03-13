@@ -34,18 +34,8 @@
  * For more information on hooks, actions, and filters, see http://codex.wordpress.org/Plugin_API.
  *
  * @package WordPress
- * @subpackage Twenty_Ten
- * @since Twenty Ten 1.0
+ * @subpackage webqem
  */
-
-/**
- * Set the content width based on the theme's design and stylesheet.
- *
- * Used to set the width of images and content. Should be equal to the width the theme
- * is designed for, generally via the style.css stylesheet.
- */
-if ( ! isset( $content_width ) )
-	$content_width = 640;
 
 /** Tell WordPress to run webqem_setup() when the 'after_setup_theme' hook is run. */
 add_action( 'after_setup_theme', 'webqem_setup' );
@@ -62,15 +52,10 @@ if ( ! function_exists( 'webqem_setup' ) ):
  * functions.php file.
  *
  * @uses add_theme_support() To add support for post thumbnails and automatic feed links.
- * @uses register_nav_menus() To add support for navigation menus.
  * @uses add_custom_background() To add support for a custom background.
  * @uses add_editor_style() To style the visual editor.
  * @uses load_theme_textdomain() For translation/localization support.
  * @uses add_custom_image_header() To add support for a custom header.
- * @uses register_default_headers() To register the default custom header images provided with the theme.
- * @uses set_post_thumbnail_size() To set a custom post thumbnail size.
- *
- * @since Twenty Ten 1.0
  */
 function webqem_setup() {
 
@@ -92,85 +77,8 @@ function webqem_setup() {
 	if ( is_readable( $locale_file ) )
 		require_once( $locale_file );
 
-	// This theme uses wp_nav_menu() in one location.
-	register_nav_menus( array(
-		'primary' => __( 'Primary Navigation', 'webqem' ),
-	) );
-
 	// This theme allows users to set a custom background
 	add_custom_background();
-
-	// Your changeable header business starts here
-	define( 'HEADER_TEXTCOLOR', '' );
-	// No CSS, just IMG call. The %s is a placeholder for the theme template directory URI.
-	define( 'HEADER_IMAGE', '%s/images/headers/path.jpg' );
-
-	// The height and width of your custom header. You can hook into the theme's own filters to change these values.
-	// Add a filter to webqem_header_image_width and webqem_header_image_height to change these values.
-	define( 'HEADER_IMAGE_WIDTH', apply_filters( 'webqem_header_image_width', 940 ) );
-	define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'webqem_header_image_height', 198 ) );
-
-	// We'll be using post thumbnails for custom header images on posts and pages.
-	// We want them to be 940 pixels wide by 198 pixels tall.
-	// Larger images will be auto-cropped to fit, smaller ones will be ignored. See header.php.
-	set_post_thumbnail_size( HEADER_IMAGE_WIDTH, HEADER_IMAGE_HEIGHT, true );
-
-	// Don't support text inside the header image.
-	define( 'NO_HEADER_TEXT', true );
-
-	// ... and thus ends the changeable header business.
-
-	// Default custom headers packaged with the theme. %s is a placeholder for the theme template directory URI.
-	register_default_headers( array(
-		'berries' => array(
-			'url' => '%s/images/headers/berries.jpg',
-			'thumbnail_url' => '%s/images/headers/berries-thumbnail.jpg',
-			/* translators: header image description */
-			'description' => __( 'Berries', 'webqem' )
-		),
-		'cherryblossom' => array(
-			'url' => '%s/images/headers/cherryblossoms.jpg',
-			'thumbnail_url' => '%s/images/headers/cherryblossoms-thumbnail.jpg',
-			/* translators: header image description */
-			'description' => __( 'Cherry Blossoms', 'webqem' )
-		),
-		'concave' => array(
-			'url' => '%s/images/headers/concave.jpg',
-			'thumbnail_url' => '%s/images/headers/concave-thumbnail.jpg',
-			/* translators: header image description */
-			'description' => __( 'Concave', 'webqem' )
-		),
-		'fern' => array(
-			'url' => '%s/images/headers/fern.jpg',
-			'thumbnail_url' => '%s/images/headers/fern-thumbnail.jpg',
-			/* translators: header image description */
-			'description' => __( 'Fern', 'webqem' )
-		),
-		'forestfloor' => array(
-			'url' => '%s/images/headers/forestfloor.jpg',
-			'thumbnail_url' => '%s/images/headers/forestfloor-thumbnail.jpg',
-			/* translators: header image description */
-			'description' => __( 'Forest Floor', 'webqem' )
-		),
-		'inkwell' => array(
-			'url' => '%s/images/headers/inkwell.jpg',
-			'thumbnail_url' => '%s/images/headers/inkwell-thumbnail.jpg',
-			/* translators: header image description */
-			'description' => __( 'Inkwell', 'webqem' )
-		),
-		'path' => array(
-			'url' => '%s/images/headers/path.jpg',
-			'thumbnail_url' => '%s/images/headers/path-thumbnail.jpg',
-			/* translators: header image description */
-			'description' => __( 'Path', 'webqem' )
-		),
-		'sunset' => array(
-			'url' => '%s/images/headers/sunset.jpg',
-			'thumbnail_url' => '%s/images/headers/sunset-thumbnail.jpg',
-			/* translators: header image description */
-			'description' => __( 'Sunset', 'webqem' )
-		)
-	) );
 }
 endif;
 
@@ -179,8 +87,6 @@ endif;
  *
  * To override this in a child theme, remove the filter and optionally add
  * your own function tied to the wp_page_menu_args filter hook.
- *
- * @since Twenty Ten 1.0
  */
 function webqem_page_menu_args( $args ) {
 	$args['show_home'] = true;
@@ -194,18 +100,16 @@ add_filter( 'wp_page_menu_args', 'webqem_page_menu_args' );
  * To override this length in a child theme, remove the filter and add your own
  * function tied to the excerpt_length filter hook.
  *
- * @since Twenty Ten 1.0
  * @return int
  */
 function webqem_excerpt_length( $length ) {
-	return 40;
+	return 120;
 }
 add_filter( 'excerpt_length', 'webqem_excerpt_length' );
 
 /**
  * Returns a "Continue Reading" link for excerpts
  *
- * @since Twenty Ten 1.0
  * @return string "Continue Reading" link
  */
 function webqem_continue_reading_link() {
@@ -218,7 +122,7 @@ function webqem_continue_reading_link() {
  * To override this in a child theme, remove the filter and add your own
  * function tied to the excerpt_more filter hook.
  *
- * @since Twenty Ten 1.0
+ *
  * @return string An ellipsis
  */
 function webqem_auto_excerpt_more( $more ) {
@@ -232,7 +136,6 @@ add_filter( 'excerpt_more', 'webqem_auto_excerpt_more' );
  * To override this link in a child theme, remove the filter and add your own
  * function tied to the get_the_excerpt filter hook.
  *
- * @since Twenty Ten 1.0
  * @return string Excerpt with a pretty "Continue Reading" link
  */
 function webqem_custom_excerpt_more( $output ) {
@@ -246,9 +149,8 @@ add_filter( 'get_the_excerpt', 'webqem_custom_excerpt_more' );
 /**
  * Remove inline styles printed when the gallery shortcode is used.
  *
- * Galleries are styled by the theme in Twenty Ten's style.css.
+ * Galleries are styled by the theme in webqem's style.css.
  *
- * @since Twenty Ten 1.0
  * @return string The gallery style filter, with the styles themselves removed.
  */
 function webqem_remove_gallery_css( $css ) {
@@ -264,8 +166,6 @@ if ( ! function_exists( 'webqem_comment' ) ) :
  * simply create your own webqem_comment(), and that function will be used instead.
  *
  * Used as a callback by wp_list_comments() for displaying the comments.
- *
- * @since Twenty Ten 1.0
  */
 function webqem_comment( $comment, $args, $depth ) {
 	$GLOBALS['comment'] = $comment;
@@ -316,7 +216,6 @@ endif;
  * To override webqem_widgets_init() in a child theme, remove the action hook and add your own
  * function tied to the init hook.
  *
- * @since Twenty Ten 1.0
  * @uses register_sidebar
  */
 function webqem_widgets_init() {
@@ -405,8 +304,6 @@ add_action( 'widgets_init', 'webqem_widgets_init' );
  *
  * To override this in a child theme, remove the filter and optionally add your own
  * function tied to the widgets_init action hook.
- *
- * @since Twenty Ten 1.0
  */
 function webqem_remove_recent_comments_style() {
 	global $wp_widget_factory;
@@ -417,8 +314,6 @@ add_action( 'widgets_init', 'webqem_remove_recent_comments_style' );
 if ( ! function_exists( 'webqem_posted_on' ) ) :
 /**
  * Prints HTML with meta information for the current post—date/time and author.
- *
- * @since Twenty Ten 1.0
  */
 function webqem_posted_on() {
 	printf( __( '<span class="%1$s">Posted on</span> %2$s <span class="meta-sep">by</span> %3$s', 'webqem' ),
@@ -440,8 +335,6 @@ endif;
 if ( ! function_exists( 'webqem_posted_in' ) ) :
 /**
  * Prints HTML with meta information for the current post (category, tags and permalink).
- *
- * @since Twenty Ten 1.0
  */
 function webqem_posted_in() {
 	// Retrieves tag list of current post, separated by commas.
