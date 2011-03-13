@@ -3,8 +3,8 @@
  * The Sidebar containing the primary and secondary widget areas.
  *
  * @package WordPress
- * @subpackage Twenty_Ten
- * @since Twenty Ten 1.0
+ * @subpackage webqem
+ * @since webqem 0.1
  */
 ?>
 <?php if ( is_active_sidebar( 'primary-widget-area' ) ) : ?>
