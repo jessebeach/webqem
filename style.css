@@ -1,47 +1,19 @@
 /*
-Theme Name: Twenty Ten
-Theme URI: http://wordpress.org/
-Description: The 2010 theme for WordPress is stylish, customizable, simple, and readable -- make it yours with a custom menu, header image, and background. Twenty Ten supports six widgetized areas (two in the sidebar, four in the footer) and featured images (thumbnails for gallery posts and custom header images for posts and pages). It includes stylesheets for print and the admin Visual Editor, special styles for posts in the "Asides" and "Gallery" categories, and has an optional one-column page template that removes the sidebar.
-Author: the WordPress team
-Version: 1.1
-Tags: black, blue, white, two-columns, fixed-width, custom-header, custom-background, threaded-comments, sticky-post, translation-ready, microformats, rtl-language-support, editor-style
+Theme Name: webqem
+Theme URI: http://github.com/jessebeach/webqem/
+Description: A flexible theme suited for small, medium and large format displays
+Version: 0.1
+Tags: flexible-width, mobile, custom-header, custom-background, threaded-comments, sticky-post, translation-ready, microformats, rtl-language-support, editor-style
 */
 
 
-/* =Reset default browser CSS. Based on work by Eric Meyer: http://meyerweb.com/eric/tools/css/reset/index.html
--------------------------------------------------------------- */
+/* @group Reset */
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, font, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td {
-	background: transparent;
-	border: 0;
-	margin: 0;
-	padding: 0;
-	vertical-align: baseline;
-}
-body {
-	line-height: 1;
-}
 h1, h2, h3, h4, h5, h6 {
-	clear: both;
 	font-weight: normal;
 }
 ol, ul {
 	list-style: none;
-}
-blockquote {
-	quotes: none;
-}
-blockquote:before, blockquote:after {
-	content: '';
-	content: none;
 }
 del {
 	text-decoration: line-through;
@@ -55,11 +27,10 @@ a img {
 	border: none;
 }
 
-/* =Layout
--------------------------------------------------------------- */
+/* @end */
 
-/* =Fonts
--------------------------------------------------------------- */
+/* @group Typography */
+
 body {
 	font-family: Georgia, "Bitstream Charter", serif;
 }
@@ -72,9 +43,9 @@ code {
 	font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
 }
 
+/* @end */
 
-/* =Structure
--------------------------------------------------------------- */
+/* @group Structure */
 
 .wrapper {}
 
@@ -83,6 +54,8 @@ code {
   width: 540px;
   outline: 1px dotted rgba(123, 0, 0, 0.5);
 }
+
+/* @end */
 
 /* =Global Elements
 -------------------------------------------------------------- */
