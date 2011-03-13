@@ -53,9 +53,17 @@
 </head>
 
 <body <?php body_class(); ?>>
-<div id="wrapper" class="hfeed">
-	<div id="header">
-		<div id="masthead">
+<div class="hfeed">
+	<div id="header" class="wrapper">
+	  <div id="quickbar" class="stack">
+	    <?php
+	    	/* A sidebar in the footer? Yep. You can can customize
+	    	 * your footer with four columns of widgets.
+	    	 */
+	    	get_sidebar( 'header' );
+	    ?>
+	  </div>
+		<div id="masthead" class="stack">
 			<div id="branding" role="banner">
 				<?php $heading_tag = ( is_home() || is_front_page() ) ? 'h1' : 'div'; ?>
 				<<?php echo $heading_tag; ?> id="site-title">
@@ -77,14 +85,8 @@
 						<img src="<?php header_image(); ?>" width="<?php echo HEADER_IMAGE_WIDTH; ?>" height="<?php echo HEADER_IMAGE_HEIGHT; ?>" alt="" />
 					<?php endif; ?>
 			</div><!-- #branding -->
-
-			<div id="access" role="navigation">
-			  <?php /*  Allow screen readers / text browsers to skip the navigation menu and get right to the good stuff */ ?>
-				<div class="skip-link screen-reader-text"><a href="#content" title="<?php esc_attr_e( 'Skip to content', 'webqem' ); ?>"><?php _e( 'Skip to content', 'webqem' ); ?></a></div>
-				<?php /* Our navigation menu.  If one isn't filled out, wp_nav_menu falls back to wp_page_menu.  The menu assiged to the primary position is the one used.  If none is assigned, the menu with the lowest ID is used.  */ ?>
-				<?php wp_nav_menu( array( 'container_class' => 'menu-header', 'theme_location' => 'primary' ) ); ?>
-			</div><!-- #access -->
 		</div><!-- #masthead -->
 	</div><!-- #header -->
 
-	<div id="main">
+	<div id="main" class="wrapper">
+	 <div class="stack">

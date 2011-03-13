@@ -10,10 +10,11 @@
  * @since Twenty Ten 1.0
  */
 ?>
+    </div> <!-- .stack -->
 	</div><!-- #main -->
 
-	<div id="footer" role="contentinfo">
-		<div id="colophon">
+	<div id="footer" role="contentinfo" class="wrapper">
+		<div id="colophon" class="stack">
 
 <?php
 	/* A sidebar in the footer? Yep. You can can customize

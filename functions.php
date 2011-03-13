@@ -320,6 +320,17 @@ endif;
  * @uses register_sidebar
  */
 function webqem_widgets_init() {
+  // Area 0, located in the header. Empty by default.
+  register_sidebar( array(
+  	'name' => __( 'First Header Widget Area', 'webqem' ),
+  	'id' => 'first-header-widget-area',
+  	'description' => __( 'The first header widget area', 'webqem' ),
+  	'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
+  	'after_widget' => '</li>',
+  	'before_title' => '<h3 class="widget-title">',
+  	'after_title' => '</h3>',
+  ) );
+
 	// Area 1, located at the top of the sidebar.
 	register_sidebar( array(
 		'name' => __( 'Primary Widget Area', 'webqem' ),
