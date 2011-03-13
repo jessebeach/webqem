@@ -32,7 +32,10 @@ a img {
 /* @group Typography */
 
 body {
-	font-family: Georgia, "Bitstream Charter", serif;
+  font-family: Georgia, "Bitstream Charter", serif;
+  font-size: medium;
+  font-size-adjust: 0.6667;
+  line-height: 1.5;
 }
 
 pre {
@@ -47,12 +50,33 @@ code {
 
 /* @group Structure */
 
-.wrapper {}
+/* @group Dense pixel ratio */
+@media screen and (min-device-pixel-ratio:2),
+screen and (-webkit-min-device-pixel-ratio:2) {
+  body {
+    font-size: xx-small;
+  }
+}
+
+/* @end */
+
+@media screen and (min-width:1003px) {
+
+body {
+  font-size: small;
+  font-size-adjust: 0;
+}
 
 .stack {
   margin: 0 auto;
   width: 540px;
   outline: 1px dotted rgba(123, 0, 0, 0.5);
+}
+
+#quickbar {
+  background-color: rgba(242, 240, 241, 0.8);
+}
+
 }
 
 /* @end */
@@ -107,8 +131,11 @@ em,
 i {
 	font-style: italic;
 }
+small {
+  font-size: smaller;
+}
 big {
-	font-size: 131.25%;
+	font-size: larger;
 }
 ins {
 	background: #ffc;
@@ -126,7 +153,6 @@ blockquote i {
 pre {
 	background: #f7f7f7;
 	color: #222;
-	line-height: 18px;
 	margin-bottom: 18px;
 	padding: 1.5em;
 }
@@ -190,8 +216,6 @@ a:active {
 #content input,
 #content textarea {
 	color: #333;
-	font-size: 16px;
-	line-height: 24px;
 }
 #content p,
 #content ul,
@@ -207,16 +231,6 @@ a:active {
 #content ol ul {
 	margin-bottom: 0;
 }
-#content pre,
-#content kbd,
-#content tt,
-#content var {
-	font-size: 15px;
-	line-height: 21px;
-}
-#content code {
-	font-size: 13px;
-}
 #content dt,
 #content th {
 	color: #000;
@@ -227,7 +241,6 @@ a:active {
 #content h4,
 #content h5,
 #content h6 {
-	line-height: 1.5;
 }
 #content table {
 	border: 1px solid #e7e7e7;
@@ -238,9 +251,7 @@ a:active {
 #content tr th,
 #content thead th {
 	color: #888;
-	font-size: 12px;
 	font-weight: bold;
-	line-height: 18px;
 	padding: 9px 24px;
 }
 #content tr td {
@@ -265,9 +276,7 @@ a:active {
 }
 #content .entry-title {
 	color: #000;
-	font-size: 21px;
 	font-weight: bold;
-	line-height: 1.3em;
 	margin-bottom: 0;
 }
 .entry-title a:link,
@@ -280,7 +289,6 @@ a:active {
 }
 .entry-meta {
 	color: #888;
-	font-size: 12px;
 }
 .entry-meta abbr,
 .entry-utility abbr {
@@ -315,14 +323,12 @@ a:active {
 }
 .entry-content label {
 	color: #888;
-	font-size: 12px;
 }
 .entry-content select {
 	margin: 0 0 24px 0;
 }
 .entry-content sup,
 .entry-content sub {
-	font-size: 10px;
 }
 .entry-content blockquote.left {
 	float: left;
@@ -401,11 +407,7 @@ body.page .edit-link {
 #content img {
 	margin: 0;
 	height: auto;
-	max-width: 640px;
 	width: auto;
-}
-#content .attachment img {
-	max-width: 900px;
 }
 #content .alignleft,
 #content img.alignleft {
@@ -435,7 +437,6 @@ body.page .edit-link {
 }
 #content .wp-caption {
 	background: #f1f1f1;
-	line-height: 18px;
 	margin-bottom: 20px;
 	padding: 4px;
 	text-align: center;
@@ -445,7 +446,6 @@ body.page .edit-link {
 }
 #content .wp-caption p.wp-caption-text {
 	color: #888;
-	font-size: 12px;
 	margin: 5px;
 }
 #content .wp-smiley {
@@ -465,7 +465,6 @@ body.page .edit-link {
 }
 #content .gallery .gallery-caption {
 	color: #888;
-	font-size: 12px;
 	margin: 0 0 12px;
 }
 #content .gallery dl {
@@ -501,13 +500,11 @@ body.page .edit-link {
 }
 #wp-calendar caption {
 	color: #222;
-	font-size: 14px;
 	font-weight: bold;
 	padding-bottom: 4px;
 	text-align: left;
 }
 #wp-calendar thead {
-	font-size: 11px;
 }
 #wp-calendar thead th {
 }
@@ -578,19 +575,14 @@ code {
 	#site-title,
 	#site-description {
 		float: none;
-		line-height: 1.4em;
 		margin: 0;
 		padding: 0;
 	}
 	#site-title {
-		font-size: 13pt;
 	}
 	.entry-content {
-		font-size: 14pt;
-		line-height: 1.6em;
 	}
 	.entry-title {
-		font-size: 21pt;
 	}
 	#access,
 	#branding img,
@@ -602,19 +594,7 @@ code {
 	.widget-area {
 		display: none !important;
 	}
-	#container,
-	#header,
-	#footer {
-		margin: 0;
-		width: 100%;
-	}
-	#content,
-	.one-column #content {
-		margin: 24pt 0 0;
-		width: 100%;
-	}
 	.wp-caption p {
-		font-size: 11pt;
 	}
 	#site-info,
 	#site-generator {
