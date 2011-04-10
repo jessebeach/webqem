@@ -4,3 +4,6 @@
 [submodule "plugins/modernizr"]
 	path = plugins/modernizr
 	url = https://github.com/Modernizr/Modernizr.git
+[submodule "plugins/oocss"]
+	path = plugins/oocss
+	url = git@github.com:jessebeach/oocss.git
