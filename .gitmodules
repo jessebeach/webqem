@@ -1,12 +1,6 @@
-[submodule "plugins/fluid960gs"]
-	path = plugins/fluid960gs
-	url = https://github.com/bauhouse/fluid960gs.git
-[submodule "plugins/modernizr"]
-	path = plugins/modernizr
-	url = https://github.com/Modernizr/Modernizr.git
 [submodule "plugins/oocss"]
 	path = plugins/oocss
-	url = git@github.com:jessebeach/oocss.git
+	url = https://github.com/jessebeach/oocss.git
 [submodule "plugins/Modernizr"]
 	path = plugins/Modernizr
-	url = git://github.com/Modernizr/Modernizr.git
+	url = https://github.com/Modernizr/Modernizr.git
