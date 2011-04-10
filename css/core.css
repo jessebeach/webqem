@@ -1,0 +1,707 @@
+@import url("core-rtl.css");
+
+@media screen, projection {
+
+  /* @group Reset */
+  
+  h1, h2, h3, h4, h5, h6 {
+  	font-weight: normal;
+  }
+  ol, ul {
+  	list-style: none;
+  }
+  del {
+  	text-decoration: line-through;
+  }
+  /* tables still need 'cellspacing="0"' in the markup */
+  table {
+  	border-collapse: collapse;
+  	border-spacing: 0;
+  }
+  a img {
+  	border: none;
+  }
+  ul, menu, dir {
+    -moz-padding-start: 12px;
+    -webkit-padding-start: 12px;
+    padding-start: 12px;
+  }
+  
+  /* @end */
+
+}
+
+/* @group Typography */
+
+body {
+  font-family: Georgia, "Bitstream Charter", serif;
+}
+
+pre {
+	font-family: "Courier 10 Pitch", Courier, monospace;
+}
+
+code {
+	font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+}
+
+/* @end */
+
+/* @group Structure */
+
+@media screen, projection {
+  body {
+    float: left;
+    margin: 0;
+    width: 100%;
+  }
+  /* Clearing */
+  .clearfix:after,
+  .stack:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+  }
+  
+  html[xmlns] .clearfix,
+  html[xmlns] .stack {
+    display: block;
+  }
+  
+  * html .clearfix,
+  * html .stack {
+    height: 1%;
+  }
+}
+
+@media screen and (max-width:480px),
+       projection and (max-width:480px),
+       tv and (max-width:480px) {
+  body {
+    font-size: medium;
+    font-size-adjust: 0.6667;
+    line-height: 1.3125;
+    padding-top: 12px;
+  }
+  
+  /* @group Inflections */
+    .menu > li ul {
+      display: none;
+    }
+  /* @end */
+}
+
+@media screen and (min-width:480px),
+       projection and (min-width:480px),
+       tv and (min-width:480px) {
+  body {
+    font-size: small;
+    font-size-adjust: 0;
+    line-height: 1.3846;
+    padding-top: 18px;
+  }
+  
+  /* @group Inflections */
+  
+  .horizontal .menu,
+  .horizontal .menu ul {
+    list-style-type: none;
+    -moz-padding-start: 0;
+    -o-padding-start: 0;
+    -webkit-padding-start: 0;
+    padding-start: 0;
+  }
+  
+  .horizontal .menu > li {
+    float: left;
+  }
+  
+  .horizontal .menu > li + li {
+    margin-left: 12px;
+    padding-left: 3px;
+    padding-right: 3px;
+  }
+  .horizontal .menu li li {
+    padding-left: 12px;
+  }
+  
+  .horizontal .menu > li:first-child {
+    margin-left: 0;
+  }
+  
+  .dropdown .menu li li {
+    padding-right: 12px;
+  }
+  
+  .dropdown .menu li > ul {
+    margin-left: -12px;
+    opacity: 0;
+    position: absolute;
+    -moz-transition-property: opacity;
+    -moz-transition-duration: 0.25s;
+    -o-transition-property: opacity;
+    -o-transition-duration: 0.25s;
+    -webkit-transition-property: opacity;
+    -webkit-transition-duration: 0.25s;
+    visibility: hidden;
+    z-index: 100;
+  }
+  
+  .dropdown .menu li:hover > ul {
+    opacity: 1;
+    -moz-transition-property: opacity;
+    -moz-transition-duration: 0.25s;
+    -o-transition-property: opacity;
+    -o-transition-duration: 0.25s;
+    -webkit-transition-property: opacity;
+    -webkit-transition-duration: 0.25s;
+    visibility: visible;
+  }
+  
+  /* @end */
+}
+
+@media screen and (min-width:640px),
+       projection and (min-width:640px),
+       tv and (min-width:640px) {
+  body {
+    padding-top: 36px;
+  }
+  /* Columning starts */
+  .left {
+    float: left;
+  }
+  .right {
+    float: right;
+  }
+  .wrapper {
+    clear: left;
+  }
+  .wrapper:after {
+    clear:both;
+    display:block;
+    visibility:hidden;
+    overflow:hidden;
+    height:0 !important;
+    line-height:0;
+    font-size:xx-large;
+    content:" x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x ";
+  }
+  .wrapper {
+    *zoom:1;
+  }
+}
+
+/* @group Dense pixel ratio */
+@media screen and (min-device-pixel-ratio:2),
+screen and (-webkit-min-device-pixel-ratio:2) {
+  body {
+    font-size: xx-small;
+  }
+}
+
+/* @end */
+
+/* @end */
+
+/* =Global Elements
+-------------------------------------------------------------- */
+
+/* Main global 'theme' and typographic styles */
+
+/* Text elements */
+p {
+	margin-bottom: 18px;
+}
+
+ol {
+	list-style: decimal;
+	margin-left: 0.25em;
+}
+ol ol {
+	list-style: upper-alpha;
+}
+ol ol ol {
+	list-style: lower-roman;
+}
+ol ol ol ol {
+	list-style: lower-alpha;
+}
+ul ul,
+ol ol,
+ul ol,
+ol ul {
+	margin-bottom: 0;
+}
+dt {
+	font-weight: bold;
+}
+strong {
+	font-weight: bold;
+}
+cite,
+em,
+i {
+	font-style: italic;
+}
+small {
+  font-size: smaller;
+}
+big {
+	font-size: larger;
+}
+ins {
+	background: #ffc;
+	text-decoration: none;
+}
+blockquote {
+	font-style: italic;
+	padding: 0 3em;
+}
+blockquote cite,
+blockquote em,
+blockquote i {
+	font-style: normal;
+}
+pre {
+	background: #f7f7f7;
+	color: #222;
+	padding: 1.5em;
+}
+abbr,
+acronym {
+	border-bottom: 1px dotted #666;
+	cursor: help;
+}
+sup,
+sub {
+	height: 0;
+	line-height: 1;
+	position: relative;
+	vertical-align: baseline;
+}
+sup {
+	bottom: 1ex;
+}
+sub {
+	top: .5ex;
+}
+input[type="text"],
+textarea {
+	background: #f9f9f9;
+	border: 1px solid #ccc;
+	-moz-box-shadow: inset 1px 1px 1px rgba(0,0,0,0.1);
+	-webkit-box-shadow: inset 1px 1px 1px rgba(0,0,0,0.1);
+	box-shadow: inset 1px 1px 1px rgba(0,0,0,0.1);
+	padding: 2px;
+}
+a:link {
+	color: #0066cc;
+}
+a:visited {
+	color: #743399;
+}
+
+a:hover,
+a:focus,
+a:active {
+	color: #ff4b33;
+}
+
+/* Text meant only for screen readers */
+.screen-reader-text {
+	position: absolute;
+	left: -9000px;
+}
+
+
+/* =Header
+-------------------------------------------------------------- */
+
+/* =Menu
+-------------------------------------------------------------- */
+
+/* =Content
+-------------------------------------------------------------- */
+
+#content table {
+	border: 1px solid #e7e7e7;
+	margin: 0 -1px 24px 0;
+	text-align: left;
+	width: 100%;
+}
+#content tr th,
+#content thead th {
+	color: #888;
+	font-weight: bold;
+	padding: 9px 24px;
+}
+#content tr td {
+	border-top: 1px solid #e7e7e7;
+	padding: 6px 24px;
+}
+#content tr.odd td {
+	background: #f2f7fc;
+}
+.hentry {
+	margin: 0 0 48px 0;
+}
+.home .sticky {
+	background: #f2f7fc;
+	border-top: 4px solid #000;
+	margin-left: -20px;
+	margin-right: -20px;
+	padding: 18px 20px;
+}
+.single .hentry {
+	margin: 0 0 36px 0;
+}
+#content .entry-title {
+	color: #000;
+	font-weight: bold;
+	margin-bottom: 0;
+}
+.entry-title a:link,
+.entry-title a:visited {
+	text-decoration: none;
+}
+.entry-title a:active,
+.entry-title a:hover {
+	color: #ff4b33;
+}
+.entry-meta {
+	color: #888;
+}
+.entry-meta abbr,
+.entry-utility abbr {
+	border: none;
+}
+.entry-meta abbr:hover,
+.entry-utility abbr:hover {
+	border-bottom: 1px dotted #666;
+}
+.entry-content,
+.entry-summary {
+	clear: both;
+	padding: 12px 0 0 0;
+}
+.entry-content fieldset {
+	border: 1px solid #e7e7e7;
+	margin: 0 0 24px 0;
+	padding: 24px;
+}
+.entry-content fieldset legend {
+	background: #fff;
+	color: #000;
+	font-weight: bold;
+	padding: 0 24px;
+}
+.entry-content input {
+	margin: 0 0 24px 0;
+}
+.entry-content input.file,
+.entry-content input.button {
+	margin-right: 24px;
+}
+.entry-content label {
+	color: #888;
+}
+.entry-content select {
+	margin: 0 0 24px 0;
+}
+.entry-content sup,
+.entry-content sub {
+}
+.entry-content blockquote.left {
+	float: left;
+	margin-left: 0;
+	margin-right: 24px;
+	text-align: right;
+	width: 33%;
+}
+.entry-content blockquote.right {
+	float: right;
+	margin-left: 24px;
+	margin-right: 0;
+	text-align: left;
+	width: 33%;
+}
+.page-link {
+	color: #000;
+	font-weight: bold;
+	margin: 0 0 22px 0;
+	word-spacing: 0.5em;
+}
+.page-link a:link,
+.page-link a:visited {
+	background: #f1f1f1;
+	color: #333;
+	font-weight: normal;
+	padding: 0.5em 0.75em;
+	text-decoration: none;
+}
+.home .sticky .page-link a {
+	background: #d9e8f7;
+}
+.page-link a:active,
+.page-link a:hover {
+	color: #ff4b33;
+}
+body.page .edit-link {
+	clear: both;
+	display: block;
+}
+
+/* =Asides
+-------------------------------------------------------------- */
+
+/* =Gallery listing
+-------------------------------------------------------------- */
+
+.category-gallery .size-thumbnail img {
+	border: 10px solid #f1f1f1;
+	margin-bottom: 0;
+}
+.category-gallery .gallery-thumb {
+	float: left;
+	margin-right: 20px;
+	margin-top: -4px;
+}
+.home #content .category-gallery .entry-utility {
+	padding-top: 4px;
+}
+
+
+/* =Attachment pages
+-------------------------------------------------------------- */
+
+.attachment .entry-content .nav-previous a:before {
+	content: '\2190\00a0';
+}
+.attachment .entry-content .nav-next a:after {
+	content: '\00a0\2192';
+}
+
+
+/* =Images
+-------------------------------------------------------------- */
+
+#content img {
+	margin: 0;
+	height: auto;
+	width: auto;
+}
+#content .alignleft,
+#content img.alignleft {
+	display: inline;
+	float: left;
+	margin-right: 24px;
+	margin-top: 4px;
+}
+#content .alignright,
+#content img.alignright {
+	display: inline;
+	float: right;
+	margin-left: 24px;
+	margin-top: 4px;
+}
+#content .aligncenter,
+#content img.aligncenter {
+	clear: both;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+#content img.alignleft,
+#content img.alignright,
+#content img.aligncenter {
+	margin-bottom: 12px;
+}
+#content .wp-caption {
+	background: #f1f1f1;
+	margin-bottom: 20px;
+	padding: 4px;
+	text-align: center;
+}
+#content .wp-caption img {
+	margin: 5px 5px 0;
+}
+#content .wp-caption p.wp-caption-text {
+	color: #888;
+	margin: 5px;
+}
+#content .wp-smiley {
+	margin: 0;
+}
+#content .gallery {
+	margin: 0 auto 18px;
+}
+#content .gallery .gallery-item {
+	float: left;
+	margin-top: 0;
+	text-align: center;
+	width: 33%;
+}
+#content .gallery img {
+	border: 2px solid #cfcfcf;
+}
+#content .gallery .gallery-caption {
+	color: #888;
+	margin: 0 0 12px;
+}
+#content .gallery dl {
+	margin: 0;
+}
+#content .gallery img {
+	border: 10px solid #f1f1f1;
+}
+#content .gallery br+br {
+	display: none;
+}
+#content .attachment img { /* single attachment images should be centered */
+	display: block;
+	margin: 0 auto;
+}
+
+
+/* =Navigation
+-------------------------------------------------------------- */
+/* =Comments
+-------------------------------------------------------------- */
+#comments {
+	clear: both;
+}
+
+/* Comments form */
+
+/* =Widget Areas
+-------------------------------------------------------------- */
+
+#wp-calendar {
+	width: 100%;
+}
+#wp-calendar caption {
+	color: #222;
+	font-weight: bold;
+	padding-bottom: 4px;
+	text-align: left;
+}
+#wp-calendar thead {
+}
+#wp-calendar thead th {
+}
+#wp-calendar tbody {
+	color: #aaa;
+}
+#wp-calendar tbody td {
+	background: #f5f5f5;
+	border: 1px solid #fff;
+	padding: 3px 0 2px;
+	text-align: center;
+}
+#wp-calendar tbody .pad {
+	background: none;
+}
+#wp-calendar tfoot #next {
+	text-align: right;
+}
+
+/* Main sidebars */
+
+/* Footer widget areas */
+
+/* =Footer
+-------------------------------------------------------------- */
+
+/* =Mobile Safari ( iPad, iPhone and iPod Touch )
+-------------------------------------------------------------- */
+
+pre {
+	-webkit-text-size-adjust: 140%;
+}
+code {
+	-webkit-text-size-adjust: 160%;
+}
+#access,
+.entry-meta,
+.entry-utility,
+.navigation,
+.widget-area {
+	-webkit-text-size-adjust: 120%;
+}
+#site-description {
+	-webkit-text-size-adjust: none;
+}
+
+/* =Print Style
+-------------------------------------------------------------- */
+
+@media print {
+	body {
+		background: none !important;
+	}
+	#wrapper {
+		clear: both !important;
+		display: block !important;
+		float: none !important;
+		position: relative !important;
+	}
+	#header {
+		border-bottom: 2pt solid #000;
+		padding-bottom: 18pt;
+	}
+	#colophon {
+		border-top: 2pt solid #000;
+	}
+	#site-title,
+	#site-description {
+		float: none;
+		margin: 0;
+		padding: 0;
+	}
+	#site-title {
+	}
+	.entry-content {
+	}
+	.entry-title {
+	}
+	#access,
+	#branding img,
+	#respond,
+	.comment-edit-link,
+	.edit-link,
+	.navigation,
+	.page-link,
+	.widget-area {
+		display: none !important;
+	}
+	.wp-caption p {
+	}
+	#site-info,
+	#site-generator {
+		float: none;
+		width: auto;
+	}
+	#colophon {
+		width: auto;
+	}
+	img#wpstats {
+		display: none;
+	}
+	#site-generator a {
+		margin: 0;
+		padding: 0;
+	}
+	#entry-author-info {
+		border: 1px solid #e7e7e7;
+	}
+	#main {
+		display: inline;
+	}
+	.home .sticky {
+		border: none;
+	}
+}

@@ -13,15 +13,14 @@
     </div> <!-- .stack -->
 	</div><!-- #main -->
 
-	<div id="footer" role="contentinfo" class="wrapper">
+	<footer id="footer" role="contentinfo" class="wrapper">
+	  <?php
+	  	/* A sidebar in the footer? Yep. You can can customize
+	  	 * your footer with four columns of widgets.
+	  	 */
+	  	get_sidebar( 'footer' );
+	  ?>
 		<div id="colophon" class="stack">
-
-<?php
-	/* A sidebar in the footer? Yep. You can can customize
-	 * your footer with four columns of widgets.
-	 */
-	get_sidebar( 'footer' );
-?>
 
 			<div id="site-info">
 				<a href="<?php echo home_url( '/' ) ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
@@ -38,9 +37,9 @@
 			</div><!-- #site-generator -->
 
 		</div><!-- #colophon -->
-	</div><!-- #footer -->
+	</footer><!-- #footer -->
 
-</div><!-- #wrapper -->
+</section><!-- #wrapper -->
 
 <?php
 	/* Always have wp_footer() just before the closing </body>

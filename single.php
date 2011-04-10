@@ -9,8 +9,7 @@
 
 get_header(); ?>
 
-		<div id="container">
-			<div id="content" role="main">
+  <div id="content" role="main" class="unit size9of12 push3of12">
 
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 
@@ -63,8 +62,7 @@ get_header(); ?>
 
 <?php endwhile; // end of the loop. ?>
 
-			</div><!-- #content -->
-		</div><!-- #container -->
+  </div><!-- #content -->
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

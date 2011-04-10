@@ -1,0 +1,24 @@
+h1, h2, h3, h4, h5, h6,
+p,
+ul, ol, dl,
+form, table,
+address, blockquote, del, hr, pre, ins, noscript, center {
+  margin: 0;
+}
+
+.content h4, .content h5, .content h6,
+.content p,
+.content ul, .content ol, .content dl,
+.content form, .content table,
+.content address, .content blockquote, .content del, .content hr, 
+.content pre, .content ins, .content noscript, .content center {
+  margin-top: 18px;
+}
+
+.content h1 {
+  margin-top: 36px;
+}
+
+.content h2, .content h3 {
+  margin-top: 27px;
+}

@@ -219,85 +219,57 @@ endif;
  * @uses register_sidebar
  */
 function webqem_widgets_init() {
-  // Area 0, located in the header. Empty by default.
   register_sidebar( array(
-  	'name' => __( 'First Header Widget Area', 'webqem' ),
-  	'id' => 'first-header-widget-area',
-  	'description' => __( 'The first header widget area', 'webqem' ),
-  	'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-  	'after_widget' => '</li>',
+  	'name' => __( 'Quickbar widget area', 'webqem' ),
+  	'id' => 'widget-area-quickbar',
+  	'description' => __( 'Located above the site title', 'webqem' ),
+  	'before_widget' => '<div id="%1$s" class="widgets %2$s">',
+  	'after_widget' => '</div>',
+  	'before_title' => '<h3 class="widget-title">',
+  	'after_title' => '</h3>',
+  ) );
+  
+  register_sidebar( array(
+  	'name' => __( 'Footer widget area', 'webqem' ),
+  	'id' => 'widget-area-footer',
+  	'description' => __( 'Located at the very bottom of the page', 'webqem' ),
+  	'before_widget' => '<div id="%1$s" class="widgets %2$s">',
+  	'after_widget' => '</div>',
   	'before_title' => '<h3 class="widget-title">',
   	'after_title' => '</h3>',
   ) );
 
-	// Area 1, located at the top of the sidebar.
-	register_sidebar( array(
-		'name' => __( 'Primary Widget Area', 'webqem' ),
-		'id' => 'primary-widget-area',
-		'description' => __( 'The primary widget area', 'webqem' ),
-		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</li>',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
-
-	// Area 2, located below the Primary Widget Area in the sidebar. Empty by default.
-	register_sidebar( array(
-		'name' => __( 'Secondary Widget Area', 'webqem' ),
-		'id' => 'secondary-widget-area',
-		'description' => __( 'The secondary widget area', 'webqem' ),
-		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</li>',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
-
-	// Area 3, located in the footer. Empty by default.
-	register_sidebar( array(
-		'name' => __( 'First Footer Widget Area', 'webqem' ),
-		'id' => 'first-footer-widget-area',
-		'description' => __( 'The first footer widget area', 'webqem' ),
-		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</li>',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
-
-	// Area 4, located in the footer. Empty by default.
-	register_sidebar( array(
-		'name' => __( 'Second Footer Widget Area', 'webqem' ),
-		'id' => 'second-footer-widget-area',
-		'description' => __( 'The second footer widget area', 'webqem' ),
-		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</li>',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
-
-	// Area 5, located in the footer. Empty by default.
-	register_sidebar( array(
-		'name' => __( 'Third Footer Widget Area', 'webqem' ),
-		'id' => 'third-footer-widget-area',
-		'description' => __( 'The third footer widget area', 'webqem' ),
-		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</li>',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
-
-	// Area 6, located in the footer. Empty by default.
-	register_sidebar( array(
-		'name' => __( 'Fourth Footer Widget Area', 'webqem' ),
-		'id' => 'fourth-footer-widget-area',
-		'description' => __( 'The fourth footer widget area', 'webqem' ),
-		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</li>',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
 }
 /** Register sidebars by running webqem_widgets_init() on the widgets_init hook. */
 add_action( 'widgets_init', 'webqem_widgets_init' );
+
+
+function widget_gridder($widgets){
+  /* Get the ids of this sidebar and widget*/
+  $sidebar = $params[0]['id'];
+  $widget = $params[0]['widget_id'];
+  
+  /* Get number of widgets in this sidebar */
+  $num_widgets = $params[1]['number'];
+  
+  /* Get data for all registered widgets */
+  $all_widgets = wp_get_sidebars_widgets();
+  
+  /* Finish if no widgets set in this sidebar */
+  if ( !isset($all_widgets[$sidebar]) || !is_array($all_widgets[$sidebar]) ) { return $params; }
+  
+  /* Set alpha class for first widget */
+  foreach ($all_widgets[$sidebar] as $key => $value) {
+    if ($all_widgets[$sidebar][$key] == $widget) {
+      $params[0]['before_widget'] = preg_replace( '/class="/', 'class="size' . ($key + 1) . 'of' . $num_widgets. ' ', $params[0]['before_widget'] );
+    }
+  }
+  
+  /* Return modified params */
+  return $params;
+}
+
+// add_filter('sidebars_widgets', 'widget_gridder');
 
 /**
  * Removes the default styles that are packaged with the Recent Comments widget.

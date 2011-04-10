@@ -33,8 +33,13 @@
 	?></title>
 <meta name="viewport" content="width=device-width" />
 <link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo( 'template_directory' ); ?>/css/core.css" />
+<link rel="stylesheet" type="text/css" media="screen and (min-width:640px)" href="<?php bloginfo( 'template_directory' ); ?>/plugins/oocss/core/grid/grids.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo( 'template_directory' ); ?>/css/typography.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo( 'template_directory' ); ?>/css/webqem.css" />
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
+<!-- <script type="text/javascript" language="javascript" src=""></script> -->
 <?php
 	/* We add some JavaScript to pages with the comment form
 	 * to support sites with threaded comments (when in use).
@@ -52,38 +57,30 @@
 </head>
 
 <body <?php body_class(); ?>>
-<div id="quickbar" class="wrapper">
-  <?php
-  	/* A sidebar in the footer? Yep. You can can customize
-  	 * your footer with four columns of widgets.
-  	 */
-  	get_sidebar( 'header' );
-  ?>
-</div>
-<div class="hfeed">
-	<div id="header" class="wrapper">
-		<div id="masthead" class="stack">
-			<div id="branding" role="banner">
-				<?php $heading_tag = ( is_home() || is_front_page() ) ? 'h1' : 'div'; ?>
-				<<?php echo $heading_tag; ?> id="site-title">
-					<span>
-						<a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
-					</span>
-				</<?php echo $heading_tag; ?>>
-				<div id="site-description"><?php bloginfo( 'description' ); ?></div>
-
-				<?php
-					// Check if this is a post or page, if it has a thumbnail, and if it's a big one
-					if ( is_singular() &&
-							has_post_thumbnail( $post->ID ) &&
-							( /* $src, $width, $height */ $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'post-thumbnail' ) ) &&
-							$image[1] >= HEADER_IMAGE_WIDTH ) :
-						// Houston, we have a new header image!
-						echo get_the_post_thumbnail( $post->ID, 'post-thumbnail' );
-					endif; ?>
-			</div><!-- #branding -->
-		</div><!-- #masthead -->
-	</div><!-- #header -->
+<?php
+	get_sidebar( 'quickbar' );
+?>
+<section class="hfeed">
+	<header id="header" class="wrapper">
+  	<hgroup id="branding" role="banner" class="stack">
+  		<h1 id="site-title">
+  			<span>
+  				<a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
+  			</span>
+  		</h1>
+  		<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
+  
+  		<?php
+  			// Check if this is a post or page, if it has a thumbnail, and if it's a big one
+  			if ( is_singular() &&
+  					has_post_thumbnail( $post->ID ) &&
+  					( /* $src, $width, $height */ $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'post-thumbnail' ) ) &&
+  					$image[1] >= HEADER_IMAGE_WIDTH ) :
+  				// Houston, we have a new header image!
+  				echo get_the_post_thumbnail( $post->ID, 'post-thumbnail' );
+  			endif; ?>
+  	</hgroup><!-- #branding -->
+	</header><!-- #header -->
 
 	<div id="main" class="wrapper">
 	 <div class="stack">

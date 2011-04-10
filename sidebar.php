@@ -9,7 +9,7 @@
 ?>
 <?php if ( is_active_sidebar( 'primary-widget-area' ) ) : ?>
 
-		<div class="widget" role="complementary">
+		<div class="widget unit size3of12 pull9of12" role="complementary">
 			<ul>
 			  <?php dynamic_sidebar( 'primary-widget-area' ); ?>
 			</ul>
@@ -20,7 +20,7 @@
 	// A second sidebar for widgets, just because.
 	if ( is_active_sidebar( 'secondary-widget-area' ) ) : ?>
 
-		<div class="widget-area" role="complementary">
+		<div class="widget-area unit size3of12 pull9of12" role="complementary">
 			<ul>
 				<?php dynamic_sidebar( 'secondary-widget-area' ); ?>
 			</ul>
